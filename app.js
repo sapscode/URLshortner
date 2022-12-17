@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/url", shortUrl)
+app.use("/urlapi", shortUrl);
 app.use("/", homeRoutes);
 
 app.listen(process.env.PORT, () => {

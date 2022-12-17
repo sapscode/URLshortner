@@ -13,13 +13,16 @@ router.post("/", async (req, res) => {
 		const { longUrl } = req.body;
 		const shortId = baseUrl + Math.random();
 
-		//todo: write code to push to DB
-
+		const storeUrl = await URL.create({
+			longUrl,
+			shortUrl: shortId
+		});
 		res.status(200).json({
-			status: "ok"
-			//todo: return the shortUrl
+			status: "ok",
+			shortUrl: storeUrl.shortUrl
 		});
 	} catch (e) {
+		console.log(e);
 		res.status(400).send(e.message);
 	}
 });
